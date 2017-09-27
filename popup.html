@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Twitch Barrage Comments</title>
+        <style type="text/css">
+            body {
+                margin: 10px;
+                white-space: nowrap;
+            }
+            h1 {
+                font-size: 15px;
+            }
+        </style>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <h1>Twitch Barrage Comments Settings</h1>
+        <div style="width:100%;">
+            <span>Choose Font Color:&nbsp&nbsp</span>
+            <span id="fColorDis">#83f4b7</span>
+        </div>
+        <input type="color" id="fontColor" value="#83f4b7">
+        <div style="width:100%;">
+            <span>Choose Font Size:&nbsp&nbsp</span>
+            <span id="fSizeDis">2</span>
+        </div>
+        <input type="range" min="1" max="5" step="1" value="2" id="fontSize">
+        <div style="width:100%;">
+            <span>Number of Lines:&nbsp&nbsp</span>
+            <span id="lnNumDis">5</span>
+        </div>
+        <input type="range" min="1" max="25" step="1" value="5" id="lnNum">
+        <div style="width:100%;">
+            <span>Scroll Speed:&nbsp&nbsp</span>
+            <span id="ssDis">18</span>
+        </div>
+       <input type="range" min="1" max="30" step="1" value="10" id="sSpeed">
+    </body>
+</html>
