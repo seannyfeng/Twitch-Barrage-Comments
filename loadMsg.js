@@ -70,6 +70,7 @@ function bulletCC() {
                 var bccDiv = document.getElementById("bccDiv"); 
                 msgCount+=1;
                 totCount=msgCount-linNum;
+                var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+scrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color:'+fontClr+'">'+messageElement.html()+'</span></marquee>';
                 if(msgCount>linNum){
                     for(var x=totCount;x>0;x--){
                         if ($("#Msg"+x).length){
@@ -80,13 +81,13 @@ function bulletCC() {
                     }
                     if (((msgCount-1)%linNum)!=0){
                         insertCount=msgCount-1;
-                        $('<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+scrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><font size='+fontSize+', color="'+fontClr+'">'+messageElement.text()+'</font></marquee>').insertAfter('#Msg'+insertCount);
+                        $(marqueeMsg).insertAfter('#Msg'+insertCount);
                     }else{
                         insertCount=msgCount-linNum+1;
-                        $('<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+scrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><font size='+fontSize+', color="'+fontClr+'">'+messageElement.text()+'</font></marquee>').insertBefore('#Msg'+insertCount);
+                        $(marqueeMsg).insertBefore('#Msg'+insertCount);
                     }
                 }else {
-                     $("#bccDiv").append('<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+scrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><font size='+fontSize+', color="'+fontClr+'">'+messageElement.text()+'</font></marquee>');
+                     $("#bccDiv").append(marqueeMsg);
                 }
             });
         });
