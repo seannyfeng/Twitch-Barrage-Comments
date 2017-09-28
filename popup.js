@@ -12,6 +12,38 @@ function getCurrentTabUrl(callback) {
 }
 document.addEventListener('DOMContentLoaded', () => {
     getCurrentTabUrl((url) => {
+        var masterSwitch =document.getElementById('masterSwitch');
+        chrome.storage.local.get("mSwitch", function(data) {
+            if(typeof data.mSwitch != "undefined") {
+                masterSwitch.checked=data.mSwitch;
+                if(masterSwitch.checked){
+                    document.getElementById("switchStatus").innerHTML="ON";
+                }else{
+                    document.getElementById("switchStatus").innerHTML="OFF";
+                }
+            }
+        });
+        masterSwitch.addEventListener('change', () => {
+            chrome.storage.local.set({mSwitch: masterSwitch.checked});
+            if(masterSwitch.checked){
+                    document.getElementById("switchStatus").innerHTML="ON";
+                }else{
+                    document.getElementById("switchStatus").innerHTML="OFF";
+                }
+        });  
+        var opacityPicker =document.getElementById('opacitySet');
+        chrome.storage.local.get("fOpacity", function(data) {
+            if(typeof data.fOpacity != "undefined") {
+                opacityPicker.value=data.fOpacity;
+                document.getElementById("opacityDis").innerHTML=data.fOpacity;
+            }
+        });
+        opacityPicker.addEventListener('change', () => {
+            chrome.storage.local.set({fOpacity: opacityPicker.value});
+            document.getElementById("opacityDis").innerHTML=opacityPicker.value;
+        });  
+        
+        
         var colorPicker =document.getElementById('fontColor');
         chrome.storage.local.get("fColor", function(data) {
             if(typeof data.fColor != "undefined") {

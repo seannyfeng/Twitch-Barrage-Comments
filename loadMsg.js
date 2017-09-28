@@ -10,7 +10,9 @@ var rtime;
 var timeout = false;
 var delta = 50;
 var msgCount = 0;
-var linNum=5;
+var linNum = 5;
+var fOpacity = 1;
+var switchStatus = true;
 var fontClr="#83f4b7";
 var fontSize=4;
 var scrollSpeed=18;
@@ -46,6 +48,17 @@ function bulletCC() {
                 if (!chatMessage.is(twitchChatMessageClass1, twitchChatMessageClass2)) {
                     return;
                 }
+                chrome.storage.local.get("mSwitch", function(data) {
+                    if(typeof data.mSwitch != "undefined") {
+                        switchStatus=data.mSwitch;
+                    }
+                });
+                chrome.storage.local.get("fOpacity", function(data) {
+                    if(typeof data.fOpacity != "undefined") {
+                        fOpacity=data.fOpacity;
+                    }
+                });
+                    
                 chrome.storage.local.get("fSize", function(data) {
                     if(typeof data.fSize != "undefined") {
                         fontSize=data.fSize;
@@ -68,6 +81,11 @@ function bulletCC() {
                 });
                 var messageElement = chatMessage.find(twitchChatMessageContent);
                 var bccDiv = document.getElementById("bccDiv"); 
+                if (!switchStatus){
+                    bccDiv.style.opacity=0;
+                }else{
+                    bccDiv.style.opacity=fOpacity;
+                }
                 msgCount+=1;
                 totCount=msgCount-linNum;
                 var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+scrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color:'+fontClr+'">'+messageElement.html()+'</span></marquee>';

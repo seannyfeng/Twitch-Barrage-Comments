@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Twitch Barrage Comments</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style type="text/css">
             body {
                 margin: 0px;
@@ -127,12 +126,71 @@
             input[type=range]:focus::-ms-fill-upper {
               background: #6441a4;
             }
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 48px;
+              height: 28px;
+            }
+
+            .switch input {display:none;}
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 20px;
+              width: 20px;
+              left: 4px;
+              bottom: 4px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            input:checked + .slider {
+              background-color: #6441a4;
+            }
+
+            input:focus + .slider {
+              box-shadow: 0 0 1px #6441a4;
+            }
+
+            input:checked + .slider:before {
+              -webkit-transform: translateX(20px);
+              -ms-transform: translateX(20px);
+              transform: translateX(20px);
+            }
             
         </style>
         <script src="popup.js"></script>
     </head>
     <body>
         <div class="header">Twitch Barrage Comments Settings</div>
+<!--        Master Switch       -->
+        <div class="title">
+            <span>Master Switch:&nbsp&nbsp</span>
+            <span id="switchStatus">ON</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <label class="switch">
+                <input type="checkbox" id="masterSwitch">
+                <span class="slider"></span>
+            </label>
+        </div>
+<!--        Font Color          -->
         <div class="title">
             <span>Choose Font Color:&nbsp&nbsp</span>
             <span id="fColorDis">#83f4b7</span>
@@ -141,6 +199,16 @@
         <div class="settings">
             <input type="color" id="fontColor" value="#83f4b7">
         </div>
+<!--        Opacity             -->
+        <div class="title">
+            <span>Opacity:&nbsp&nbsp</span>
+            <span id="opacityDis">1</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <input type="range" min="0" max="1" step="0.1" value="1" id="opacitySet">
+        </div>        
+<!--        Font Size           -->
         <div class="title">
             <span>Choose Font Size:&nbsp&nbsp</span>
             <span id="fSizeDis">2</span>
@@ -150,6 +218,7 @@
         <div class="settings">
             <input type="range" min="50" max="250" step="10" value="100" id="fontSize">
         </div>
+<!--        Number of Lines     -->
         <div class="title">
             <span>Number of Lines:&nbsp&nbsp</span>
             <span id="lnNumDis">5</span>
@@ -158,6 +227,7 @@
         <div class="settings">
             <input type="range" min="1" max="25" step="1" value="5" id="lnNum">
         </div>
+<!--        Scrolling Speed     -->
         <div class="title">
             <span>Scroll Speed:&nbsp&nbsp</span>
             <span id="ssDis">18</span>
@@ -166,11 +236,12 @@
        <div class="settings">
            <input type="range" min="1" max="30" step="1" value="10" id="sSpeed">
         </div>
+<!--        Contact Us          -->
         <div class="title">
             <span>Contact Us</span>
         </div>
        <div class="settings" style="padding-bottom:20px;padding-top:20px">
-               <a href="mailto:info@knittlabs.com?Subject=Twitch%20Barrage%20Comments" target="_blank">INFO@KNITTLABS.COM</a>
+           <a href="mailto:info@knittlabs.com?Subject=Twitch%20Barrage%20Comments" target="_blank">INFO@KNITTLABS.COM</a>
         </div>
     </body>
 </html>
