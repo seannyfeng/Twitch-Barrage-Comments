@@ -4,37 +4,161 @@
         <title>Twitch Barrage Comments</title>
         <style type="text/css">
             body {
-                margin: 10px;
+                margin: 0px;
                 white-space: nowrap;
             }
-            h1 {
-                font-size: 15px;
+            .header{
+                background-color: #6441a4;
+                font: 18px bold;
+                font-family: Impact;
+                color: white;
+                width: 100%;
+                padding: 10px;
             }
+            .title{
+                background-color: #17141f;
+                font:14px bold;
+                font-family: Impact;
+                color: #cbc8d0;
+                width: 100%;
+                padding: 20px 20px 20px 1px;
+                text-align: center;
+            }
+            .settings{
+                background-color: #0d0c10;
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+            input{
+                width: 80%;
+                background-color: #433f4a;
+                 -webkit-appearance: none;
+            }
+            input[type=range] {
+               
+                margin: 18px 0;
+ 
+            }
+            input[type=range]:focus {
+                outline: none;
+            }
+            input[type=range]::-webkit-slider-runnable-track {
+                height: 5px;
+                cursor: pointer;
+                box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+                background: #6441a4;
+                border-radius: 1.3px;
+                border: 0.2px solid #010101;
+            }
+            input[type=range]::-webkit-slider-thumb {
+              box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              border: 1px solid #000000;
+              height: 36px;
+              width: 16px;
+              border-radius: 3px;
+              background: #ffffff;
+              cursor: pointer;
+              -webkit-appearance: none;
+              margin-top: -14px;
+            }
+            input[type=range]:focus::-webkit-slider-runnable-track {
+              background: #6441a4;
+            }
+            input[type=range]::-moz-range-track {
+              width: 100%;
+              height: 8.4px;
+              cursor: pointer;
+              animate: 0.2s;
+              box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              background: #6441a4;
+              border-radius: 1.3px;
+              border: 0.2px solid #010101;
+            }
+            input[type=range]::-moz-range-thumb {
+              box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              border: 1px solid #000000;
+              height: 36px;
+              width: 16px;
+              border-radius: 3px;
+              background: #ffffff;
+              cursor: pointer;
+            }
+            input[type=range]::-ms-track {
+              width: 100%;
+              height: 8.4px;
+              cursor: pointer;
+              animate: 0.2s;
+              background: transparent;
+              border-color: transparent;
+              border-width: 16px 0;
+              color: transparent;
+            }
+            input[type=range]::-ms-fill-lower {
+              background: #2a6495;
+              border: 0.2px solid #010101;
+              border-radius: 2.6px;
+              box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+            }
+            input[type=range]::-ms-fill-upper {
+              background: #6441a4;
+              border: 0.2px solid #010101;
+              border-radius: 2.6px;
+              box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+            }
+            input[type=range]::-ms-thumb {
+              box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+              border: 1px solid #000000;
+              height: 36px;
+              width: 16px;
+              border-radius: 3px;
+              background: #ffffff;
+              cursor: pointer;
+            }
+            input[type=range]:focus::-ms-fill-lower {
+              background: #6441a4;
+            }
+            input[type=range]:focus::-ms-fill-upper {
+              background: #6441a4;
+            }
+            
         </style>
         <script src="popup.js"></script>
     </head>
     <body>
-        <h1>Twitch Barrage Comments Settings</h1>
-        <div style="width:100%;">
+        <div class="header">Twitch Barrage Comments Settings</div>
+        <div class="title">
             <span>Choose Font Color:&nbsp&nbsp</span>
             <span id="fColorDis">#83f4b7</span>
+            <span>&nbsp&nbsp</span>
         </div>
-        <input type="color" id="fontColor" value="#83f4b7">
-        <div style="width:100%;">
+        <div class="settings">
+            <input type="color" id="fontColor" value="#83f4b7">
+        </div>
+        <div class="title">
             <span>Choose Font Size:&nbsp&nbsp</span>
             <span id="fSizeDis">2</span>
             <span>%</span>
+            <span>&nbsp&nbsp</span>
         </div>
-        <input type="range" min="50" max="250" step="10" value="100" id="fontSize">
-        <div style="width:100%;">
+        <div class="settings">
+            <input type="range" min="50" max="250" step="10" value="100" id="fontSize">
+        </div>
+        <div class="title">
             <span>Number of Lines:&nbsp&nbsp</span>
             <span id="lnNumDis">5</span>
+            <span>&nbsp&nbsp</span>
         </div>
-        <input type="range" min="1" max="25" step="1" value="5" id="lnNum">
-        <div style="width:100%;">
+        <div class="settings">
+            <input type="range" min="1" max="25" step="1" value="5" id="lnNum">
+        </div>
+        <div class="title">
             <span>Scroll Speed:&nbsp&nbsp</span>
             <span id="ssDis">18</span>
+            <span>&nbsp&nbsp</span>
         </div>
-       <input type="range" min="1" max="30" step="1" value="10" id="sSpeed">
+       <div class="settings">
+           <input type="range" min="1" max="30" step="1" value="10" id="sSpeed">
+        </div>
     </body>
 </html>
