@@ -192,12 +192,23 @@
         </div>
 <!--        Font Color          -->
         <div class="title">
+            <span>Customized Color&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <label class="switch">
+                <input type="checkbox" id="randomColor">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div id="colorSettings">
+        <div class="title">
             <span>Choose Font Color:&nbsp&nbsp</span>
             <span id="fColorDis">#83f4b7</span>
             <span>&nbsp&nbsp</span>
         </div>
         <div class="settings">
             <input type="color" id="fontColor" value="#83f4b7">
+        </div>
         </div>
 <!--        Opacity             -->
         <div class="title">
@@ -220,12 +231,12 @@
         </div>
 <!--        Number of Lines     -->
         <div class="title">
-            <span>Number of Lines:&nbsp&nbsp</span>
-            <span id="lnNumDis">5</span>
+            <span>Comment Buffer:&nbsp&nbsp</span>
+            <span id="cbDis">100</span>
             <span>&nbsp&nbsp</span>
         </div>
         <div class="settings">
-            <input type="range" min="1" max="25" step="1" value="5" id="lnNum">
+            <input type="range" min="1" max="100" step="1" value="50" id="commentBuffer">
         </div>
 <!--        Scrolling Speed     -->
         <div class="title">

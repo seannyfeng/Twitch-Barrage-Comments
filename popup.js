@@ -31,6 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById("switchStatus").innerHTML="OFF";
                 }
         });  
+        var randomColor =document.getElementById('randomColor');
+        chrome.storage.local.get("randomColor", function(data) {
+            if(typeof data.randomColor != "undefined") {
+                randomColor.checked=data.randomColor;
+            }
+            if(randomColor.checked){
+                document.getElementById("colorSettings").style.display="block";
+            }else{
+                document.getElementById("colorSettings").style.display="none";
+            }
+        });
+        randomColor.addEventListener('change', () => {
+            chrome.storage.local.set({randomColor: randomColor.checked});
+            if(randomColor.checked){
+                document.getElementById("colorSettings").style.display="block";
+            }else{
+                document.getElementById("colorSettings").style.display="none";
+            }
+        });
+        
+        
+        
+        
+        
         var opacityPicker =document.getElementById('opacitySet');
         chrome.storage.local.get("fOpacity", function(data) {
             if(typeof data.fOpacity != "undefined") {
@@ -66,16 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.storage.local.set({fSize: sizePicker.value});
             document.getElementById("fSizeDis").innerHTML=sizePicker.value;
         });  
-        var lnNumPicker =document.getElementById('lnNum');
-        chrome.storage.local.get("lNum", function(data) {
-            if(typeof data.lNum != "undefined") {
-                lnNumPicker.value=data.lNum;
-                document.getElementById("lnNumDis").innerHTML=data.lNum;
+        var lnNumPicker =document.getElementById('commentBuffer');
+        chrome.storage.local.get("maxRec", function(data) {
+            if(typeof data.maxRec != "undefined") {
+                lnNumPicker.value=data.maxRec;
+                document.getElementById("cbDis").innerHTML=data.maxRec;
             }
         });
         lnNumPicker.addEventListener('change', () => {
-            chrome.storage.local.set({lNum: lnNumPicker.value});
-            document.getElementById("lnNumDis").innerHTML=lnNumPicker.value;
+            chrome.storage.local.set({maxRec: lnNumPicker.value});
+            document.getElementById("cbDis").innerHTML=lnNumPicker.value;
         });  
         var ssPicker =document.getElementById('sSpeed');
         chrome.storage.local.get("sSpeed", function(data) {
