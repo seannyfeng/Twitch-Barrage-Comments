@@ -63,7 +63,6 @@ function bulletCC() {
                         fOpacity=data.fOpacity;
                     }
                 });
-                    
                 chrome.storage.local.get("fSize", function(data) {
                     if(typeof data.fSize != "undefined") {
                         fontSize=data.fSize;

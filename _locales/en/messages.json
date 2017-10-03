@@ -1,0 +1,50 @@
+{
+    "extName":{
+        "message":"Twitch Barrage Comments",
+        "description":"Extension name."
+    },
+    "shortName":{
+        "message":"TBC",
+        "description":"Extension short name."
+    },
+    "extDesc":{
+        "message":"Barrage Comments for Twitch",
+        "description":"Extension description."
+    },
+    "popupTitle":{
+        "message":"Twitch Barrage Comments Settings"
+    },
+    "tMasterSwitch":{
+        "message":"Master Switch"
+    },
+    "tON":{
+        "message":"ON"
+    },
+    "tOFF":{
+        "message":"OFF"
+    },
+    "tChooseFontColor":{
+        "message":"Choose Font Color"
+    },
+    "tCustomizedColor":{
+        "message":"Customized Color"
+    },
+    "tOpacity":{
+        "message":"Opacity"
+    },
+    "tChooseFontSize":{
+        "message":"Choose Font Size"
+    },
+    "tCommentBuffer":{
+        "message":"Comment Buffer"
+    },
+    "tScrollSpeed":{
+        "message":"Scroll Speed"
+    },
+    "tContactUs":{
+        "message":"Contact Us"
+    },
+     "tUrlErrorMsg":{
+        "message":"tab.url should be a string"
+    }
+}

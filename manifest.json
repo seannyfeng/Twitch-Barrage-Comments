@@ -1,15 +1,15 @@
 {
     "manifest_version": 2,
-    "name": "Twitch Barrage Comments",
-    "short_name": "TBC",
-    "description": "Barrage Comments for Twitch",
+    "name": "__MSG_extName__",
+    "short_name": "__MSG_shortName__",
+    "description": "__MSG_extDesc__",
     "version": "1.0",
     "icons": {
-        "128":"icon.png"
+        "128":"assets/img/icon.png"
     },
     "browser_action": {
-        "default_icon": "icon.png",
-        "default_popup": "popup.html"
+        "default_icon": "assets/img/icon.png",
+        "default_popup": "html/popup.html"
     },
     "content_scripts": [{
         "matches" : ["https://www.twitch.tv/*"],
@@ -25,13 +25,22 @@
             "https://www.twitch.tv/*/chat"
         ],
         "js": [
-            "jquery-3.2.1.slim.min.js",
-            "loadMsg.js"
+            "lib/jquery-3.2.1.slim.min.js",
+            "js/loadMsg.js"
         ],
         "run_at": "document_end"
     }],
+    "web_accessible_resources": [
+        "lib/jquery-3.2.1.slim.min.js",
+        "js/loadMsg.js",
+        "js/popup.js",
+        "html/popup.html",
+        "css/popup.css",
+        "assets/img/icon.png"
+    ],
     "permissions": [
         "activeTab",
         "storage"
-    ]
+    ],
+    "default_locale":"en"
 }

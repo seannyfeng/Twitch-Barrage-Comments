@@ -1,3 +1,23 @@
+var ssPicker = document.getElementById('sSpeed');
+var sizePicker = document.getElementById('fontSize');
+var colorPicker = document.getElementById('fontColor');
+var lnNumPicker = document.getElementById('commentBuffer');
+var switchStatus = document.getElementById("switchStatus");
+var masterSwitch = document.getElementById('masterSwitch');
+var randomColor  = document.getElementById('randomColor');
+var opacityPicker = document.getElementById('opacitySet');
+var urlErrorMsg = chrome.i18n.getMessage("tUrlErrorMsg");
+document.title = chrome.i18n.getMessage("extName");
+document.getElementById("tOpacity").innerHTML = chrome.i18n.getMessage("tOpacity");
+document.getElementById("tContactUs").innerHTML = chrome.i18n.getMessage("tContactUs");
+document.getElementById("settingTitle").innerHTML = chrome.i18n.getMessage("popupTitle");
+document.getElementById("tScrollSpeed").innerHTML = chrome.i18n.getMessage("tScrollSpeed");
+document.getElementById("tMasterSwitch").innerHTML = chrome.i18n.getMessage("tMasterSwitch");
+document.getElementById("tCommentBuffer").innerHTML = chrome.i18n.getMessage("tCommentBuffer");
+document.getElementById("tChooseFontSize").innerHTML = chrome.i18n.getMessage("tChooseFontSize");
+document.getElementById("tChooseFontColor").innerHTML = chrome.i18n.getMessage("tChooseFontColor");
+document.getElementById("tCustomizedColor").innerHTML = chrome.i18n.getMessage("tCustomizedColor");
+switchStatus.innerHTML = chrome.i18n.getMessage("tON");
 function getCurrentTabUrl(callback) {
     var queryInfo = {
         active: true,
@@ -6,32 +26,31 @@ function getCurrentTabUrl(callback) {
     chrome.tabs.query(queryInfo, (tabs) => {
         var tab = tabs[0];
         var url = tab.url;
-        console.assert(typeof url == 'string', 'tab.url should be a string');
+        console.assert(typeof url == 'string', urlErrorMsg);
         callback(url);
     });
 }
 document.addEventListener('DOMContentLoaded', () => {
     getCurrentTabUrl((url) => {
-        var masterSwitch =document.getElementById('masterSwitch');
         chrome.storage.local.get("mSwitch", function(data) {
             if(typeof data.mSwitch != "undefined") {
                 masterSwitch.checked=data.mSwitch;
                 if(masterSwitch.checked){
-                    document.getElementById("switchStatus").innerHTML="ON";
+                    switchStatus.innerHTML=chrome.i18n.getMessage("tON");
                 }else{
-                    document.getElementById("switchStatus").innerHTML="OFF";
+                    switchStatus.innerHTML=chrome.i18n.getMessage("tOFF");
                 }
             }
         });
         masterSwitch.addEventListener('change', () => {
             chrome.storage.local.set({mSwitch: masterSwitch.checked});
             if(masterSwitch.checked){
-                    document.getElementById("switchStatus").innerHTML="ON";
+                    switchStatus.innerHTML=chrome.i18n.getMessage("tON");
                 }else{
-                    document.getElementById("switchStatus").innerHTML="OFF";
+                    switchStatus.innerHTML=chrome.i18n.getMessage("tOFF");
                 }
         });  
-        var randomColor =document.getElementById('randomColor');
+        
         chrome.storage.local.get("randomColor", function(data) {
             if(typeof data.randomColor != "undefined") {
                 randomColor.checked=data.randomColor;
@@ -50,12 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById("colorSettings").style.display="none";
             }
         });
-        
-        
-        
-        
-        
-        var opacityPicker =document.getElementById('opacitySet');
         chrome.storage.local.get("fOpacity", function(data) {
             if(typeof data.fOpacity != "undefined") {
                 opacityPicker.value=data.fOpacity;
@@ -66,9 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.storage.local.set({fOpacity: opacityPicker.value});
             document.getElementById("opacityDis").innerHTML=opacityPicker.value;
         });  
-        
-        
-        var colorPicker =document.getElementById('fontColor');
         chrome.storage.local.get("fColor", function(data) {
             if(typeof data.fColor != "undefined") {
                 colorPicker.value=data.fColor;
@@ -79,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.storage.local.set({fColor: colorPicker.value});
             document.getElementById("fColorDis").innerHTML=colorPicker.value;
         });
-        var sizePicker =document.getElementById('fontSize');
         chrome.storage.local.get("fSize", function(data) {
             if(typeof data.fSize != "undefined") {
                 sizePicker.value=data.fSize;
@@ -90,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.storage.local.set({fSize: sizePicker.value});
             document.getElementById("fSizeDis").innerHTML=sizePicker.value;
         });  
-        var lnNumPicker =document.getElementById('commentBuffer');
         chrome.storage.local.get("maxRec", function(data) {
             if(typeof data.maxRec != "undefined") {
                 lnNumPicker.value=data.maxRec;
@@ -100,8 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lnNumPicker.addEventListener('change', () => {
             chrome.storage.local.set({maxRec: lnNumPicker.value});
             document.getElementById("cbDis").innerHTML=lnNumPicker.value;
-        });  
-        var ssPicker =document.getElementById('sSpeed');
+        });      
         chrome.storage.local.get("sSpeed", function(data) {
             if(typeof data.sSpeed != "undefined") {
                 ssPicker.value=data.sSpeed;

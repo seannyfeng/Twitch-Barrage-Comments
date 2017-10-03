@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+        <title id="pageTitle">Twitch Barrage Comments</title>
+    </head>
+    <body>
+        <div class="header" id="settingTitle">Twitch Barrage Comments Settings</div>
+<!--        Master Switch       -->
+        <div class="title">
+            <span id="tMasterSwitch">Master Switch</span><span>:&nbsp&nbsp</span>
+            <span id="switchStatus">ON</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <label class="switch">
+                <input type="checkbox" id="masterSwitch">
+                <span class="slider"></span>
+            </label>
+        </div>
+<!--        Font Color          -->
+        <div class="title">
+            <span id="tCustomizedColor">Customized Color</span><span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <label class="switch">
+                <input type="checkbox" id="randomColor">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div id="colorSettings">
+        <div class="title">
+            <span id="tChooseFontColor">Choose Font Color</span><span>:&nbsp&nbsp</span>
+            <span id="fColorDis">#83f4b7</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <input type="color" id="fontColor" value="#83f4b7">
+        </div>
+        </div>
+<!--        Opacity             -->
+        <div class="title">
+            <span id="tOpacity">Opacity</span><span>:&nbsp&nbsp</span>
+            <span id="opacityDis">1</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <input type="range" min="0" max="1" step="0.1" value="1" id="opacitySet">
+        </div>        
+<!--        Font Size           -->
+        <div class="title">
+            <span id="tChooseFontSize">Choose Font Size</span><span>:&nbsp&nbsp</span>
+            <span id="fSizeDis">2</span>
+            <span>%</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <input type="range" min="50" max="250" step="10" value="100" id="fontSize">
+        </div>
+<!--        Number of Lines     -->
+        <div class="title">
+            <span id="tCommentBuffer">Comment Buffer</span><span>:&nbsp&nbsp</span>
+            <span id="cbDis">100</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+        <div class="settings">
+            <input type="range" min="1" max="100" step="1" value="50" id="commentBuffer">
+        </div>
+<!--        Scrolling Speed     -->
+        <div class="title">
+            <span id="tScrollSpeed">Scroll Speed</span><span>:&nbsp&nbsp</span>
+            <span id="ssDis">18</span>
+            <span>&nbsp&nbsp</span>
+        </div>
+       <div class="settings">
+           <input type="range" min="1" max="30" step="1" value="10" id="sSpeed">
+        </div>
+<!--        Contact Us          -->
+        <div class="title">
+            <span id="tContactUs">Contact Us</span>
+        </div>
+       <div class="settings" style="padding-bottom:20px;padding-top:20px">
+           <a href="mailto:info@knittlabs.com?Subject=Twitch%20Barrage%20Comments" target="_blank">INFO@KNITTLABS.COM</a>
+        </div>
+    </body>
+    <link href="/css/popup.css" rel="stylesheet">
+    <script src="/js/popup.js"></script>
+</html>
