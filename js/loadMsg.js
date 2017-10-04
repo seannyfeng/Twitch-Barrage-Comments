@@ -44,7 +44,6 @@ var chatLoadedObserver = new MutationObserver(function (mutations, observer) {
         }
     })
 });
-
 function bulletCC() {
     return new MutationObserver(function (mutations) {
         mutations.forEach(function (mutation) {
@@ -129,6 +128,7 @@ function bulletCC() {
                 }else{
                     var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+RscrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color: rgb('+fontRed+','+fontGreen+','+fontBlue+')">'+messageElement.html()+'</span></marquee>';
                 }
+                console.log(msgCount);
                 $("#bccDiv").append(marqueeMsg);
                 insertHeight=imgSize*(currentPos+evenLn);
                 $("#Msg"+msgCount).css('top',insertHeight);
