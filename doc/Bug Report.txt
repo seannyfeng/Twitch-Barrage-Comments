@@ -1,1 +1,10 @@
 Oct-04-2017
+///////////////////////////////////////////////////////
+Comments from zsz1988
+1. make the pop-up more compact so it doesn't take too much space and people don't have to scroll down. 
+2. can consider assigning the same color to the same user just in case people want to have some short conversation. 
+3. clip function can be added in the future to include the barrage in the clip.
+4. can add a setting to constrain the barrage to a certain area on the screen.
+5. sometimes the barrage don't show up when opening a new page.
+
+//////////////////////////////////////////////////////
