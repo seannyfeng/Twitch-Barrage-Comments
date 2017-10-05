@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
             chrome.storage.local.set({mSwitch: masterSwitch.checked});
             if(masterSwitch.checked){
                     switchStatus.innerHTML=chrome.i18n.getMessage("tON");
-                }else{
-                    switchStatus.innerHTML=chrome.i18n.getMessage("tOFF");
-                }
+            }else{
+                switchStatus.innerHTML=chrome.i18n.getMessage("tOFF");
+            }
         });  
         
         chrome.storage.local.get("randomColor", function(data) {

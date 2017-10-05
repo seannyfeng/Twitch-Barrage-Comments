@@ -19,7 +19,7 @@ var custClr=false;
 var fontSize=100;
 var scrollSpeed=18;
 var imgSize=21;
-var RscrollSpeed=0;
+var RscrollSpeed=18;
 var config = {attributes: false, childList: true, characterData: false};
 var htmlBody = $("body")[0];
 var BCCFinder = bulletCC();
@@ -55,16 +55,22 @@ function bulletCC() {
                 chrome.storage.local.get("mSwitch", function(data) {
                     if(typeof data.mSwitch != "undefined") {
                         switchStatus=data.mSwitch;
+                    }else {
+                        chrome.storage.local.set({mSwitch: true});
                     }
                 });
                 chrome.storage.local.get("fOpacity", function(data) {
                     if(typeof data.fOpacity != "undefined") {
                         fOpacity=data.fOpacity;
+                    } else {
+                        chrome.storage.local.set({fOpacity: 1});
                     }
                 });
                 chrome.storage.local.get("fSize", function(data) {
                     if(typeof data.fSize != "undefined") {
                         fontSize=data.fSize;
+                    } else {
+                        chrome.storage.local.set({fSize: 100});
                     }
                 });
                 chrome.storage.local.get("fColor", function(data) {
@@ -75,11 +81,15 @@ function bulletCC() {
                 chrome.storage.local.get("maxRec", function(data) {
                     if(typeof data.maxRec != "undefined") {
                         maxRec=data.maxRec;
+                    } else {
+                        chrome.storage.local.set({maxRec: 50});
                     }
                 });
                 chrome.storage.local.get("randomColor", function(data) {
                     if(typeof data.randomColor != "undefined") {
                         custClr=data.randomColor;
+                    } else {
+                        chrome.storage.local.set({randomColor: false});
                     }
                 });
                 var canvHeight = $("#bccDiv").height();
@@ -107,6 +117,13 @@ function bulletCC() {
                         if(RscrollSpeed<1){
                             RscrollSpeed=1;
                         }
+                    } else {
+                        chrome.storage.local.set({sSpeed: 18});
+                        scrollSpeed=data.sSpeed; 
+                        RscrollSpeed=scrollSpeed*(Math.random()*0.5+0.75);
+                        if(RscrollSpeed<1){
+                            RscrollSpeed=1;
+                        }
                     }
                 });
                 var messageElement = chatMessage.find(twitchChatMessageContent);
@@ -124,9 +141,9 @@ function bulletCC() {
                 evenLn=(parseInt(msgCount/linNum)%2)/2;
                 totCount=msgCount-linNum;
                 if (custClr){
-                     var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+RscrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color:'+fontClr+'">'+messageElement.html()+'</span></marquee>';
+                     var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+RscrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color:'+fontClr+'">'+messageElement.html()+'</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</marquee>';
                 }else{
-                    var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+RscrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color: rgb('+fontRed+','+fontGreen+','+fontBlue+')">'+messageElement.html()+'</span></marquee>';
+                    var marqueeMsg='<marquee direction="left" id="Msg'+msgCount+'" scrollamount="'+RscrollSpeed+'" behavior="scroll" loop=1; style="white-space:nowrap;"><span style="font-size:'+fontSize+'%; color: rgb('+fontRed+','+fontGreen+','+fontBlue+')">'+messageElement.html()+'</span> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</marquee>';
                 }
                 console.log(msgCount);
                 $("#bccDiv").append(marqueeMsg);

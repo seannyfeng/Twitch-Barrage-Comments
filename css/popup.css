@@ -13,7 +13,7 @@ a {
     font-family: Impact;
     color: white;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
 }
 .title{
     background-color: #17141f;
@@ -21,7 +21,7 @@ a {
     font-family: Impact;
     color: #cbc8d0;
     width: 100%;
-    padding: 20px 20px 20px 1px;
+    padding: 2px 20px 2px 1px;
     text-align: center;
 }
 .settings{
@@ -160,4 +160,7 @@ input:checked + .slider:before {
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+}
+#tEmail{
+    padding-bottom: 5px;
 }
